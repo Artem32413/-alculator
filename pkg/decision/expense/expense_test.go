@@ -3,8 +3,6 @@ package expense
 import (  
 	"errors"  
 	"testing"  
-
-	app "github.com/Artem32413/Aplication"
 )  
 
 func TestCalc(t *testing.T) {  
@@ -37,7 +35,7 @@ func TestCalc(t *testing.T) {
 
 	for _, testCase := range testCasesSuccess {  
 		t.Run(testCase.name, func(t *testing.T) {  
-			val, err := app.Calc(testCase.expression)  
+			val, err := Calc(testCase.expression)  
 			if err != nil {  
 				t.Fatalf("successful case %s returns error: %v", testCase.expression, err)  
 			}  
@@ -81,7 +79,7 @@ func TestCalc(t *testing.T) {
 
 	for _, testCase := range testCasesFail {  
 		t.Run(testCase.name, func(t *testing.T) {  
-			val, err := app.Calc(testCase.expression)  
+			val, err := Calc(testCase.expression)  
 			if err == nil {  
 				t.Fatalf("expected error for case %s but got result: %f", testCase.expression, val)  
 			}  

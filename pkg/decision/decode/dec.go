@@ -28,7 +28,7 @@ func Calculate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	resRead, err := ex.Start(root.Expression)
+	resRead, err := ex.Calc(root.Expression)
 	if FuncExiting := er.Error422(err, w, &myErr); FuncExiting != true {
 		return
 	} else {
