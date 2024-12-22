@@ -8,14 +8,36 @@ import (
 	"strings"
 )
 
-func ReadingString(s string) (string, error) {
-	s = strings.ReplaceAll(s, " ", "")
-	if err := validateExpression(s); err != nil {
+func Calc(expression string) (string, error) {
+	log.Println("====================================================================")
+	log.Println(expression)
+	expression = strings.ReplaceAll(expression, " ", "")
+	log.Println(expression)
+	log.Println("====================================================================")
+	if err := validateExpression(expression); err != nil {
 		return "", errors.New("Expression is not valid")
 	}
 	var sl = []string{}
-	for _, el := range s {
-		sl = append(sl, string(el))
+	var l string
+	var curEl string
+	for _, el := range expression {
+
+		curEl = string(el)
+		if curEl == "*" || curEl == "/" || curEl == "-" || curEl == "+" || curEl == "(" || curEl == ")" {
+			sl = append(sl, l)
+			sl = append(sl, curEl)
+			l = ""
+		} else {
+			l += curEl
+		}
+		log.Println("Calc", sl)
+	}
+	if curEl == "*" || curEl == "/" || curEl == "-" || curEl == "+" || curEl == "(" || curEl == ")" {
+		sl = append(sl, l)
+		sl = append(sl, curEl)
+		l = ""
+	} else {
+		sl = append(sl, l)
 	}
 	for {
 		var ok bool
@@ -76,12 +98,15 @@ func mainCalc(k []string) (string, bool) {
 	var ok bool
 	for {
 		k, ok = priority(k)
+		log.Println("mainCalc ", k)
 		if !ok {
 			return k[0], true
 		}
 	}
 }
 func priority(z []string) ([]string, bool) {
+	log.Println("priority", z[0:])
+	log.Println("priorityLen", len(z))
 	for i, el := range z {
 		if el == "*" || el == "/" {
 			return run(z, i), true
@@ -95,13 +120,16 @@ func priority(z []string) ([]string, bool) {
 	return z, false
 }
 func run(z []string, i int) []string {
-	res := calc(z[i-1], z[i], z[i+1])
+	log.Println("runZ", z[i-1],"-", z[i],"-", z[i+1])
+	log.Println("runI", i)
+	res := calcularion(z[i-1], z[i], z[i+1])
+	log.Println("runRes", res)
 	z[i-1] = res
 	d := slices.Delete(z, i, i+2)
 	return d
 }
-func calc(n1, sign, n2 string) string {
-
+func calcularion(n1, sign, n2 string) string {
+	log.Println("calcularion ", n1, sign, n2)
 	in1, err := strconv.ParseFloat(n1, 64)
 	if err != nil {
 		log.Printf("Ошибка конвертации 1 числа\n")
