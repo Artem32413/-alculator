@@ -10,4 +10,5 @@ func Start(expression string)(float64, error){
         return 0, err
     }
 	return znach, nil
+	
 }
