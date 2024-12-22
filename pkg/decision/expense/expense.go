@@ -29,7 +29,6 @@ func Calc(expression string) (float64, error) {
 		} else {
 			l += curEl
 		}
-		// log.Println("Calc", sl)
 	}
 	if curEl == "*" || curEl == "/" || curEl == "-" || curEl == "+" || curEl == "(" || curEl == ")" {
 		if l != "" {
@@ -46,8 +45,6 @@ func Calc(expression string) (float64, error) {
 		}
 
 	}
-
-	log.Println("ИСходник", strings.Join(sl, ","))
 	for {
 		var ok bool
 		sl, ok = inBracket(sl)
@@ -118,7 +115,6 @@ func mainCalc(k []string) (string, bool) {
 	}
 }
 func priority(z []string) ([]string, bool) {
-	log.Println(strings.Join(z, ","))
 	for i, el := range z {
 		if el == "*" || el == "/" {
 			return run(z, i), true
@@ -187,9 +183,7 @@ func inBracket(sl []string) ([]string, bool) {
 		if el == ")" {
 			str, _ := mainCalc(q)
 			sl[bracket1] = str
-			log.Println("Начало", strings.Join(sl, ","))
 			sl = slices.Delete(sl, bracket1+1, i+1)
-			log.Println("Конец", strings.Join(sl, ","))
 			insideBrackets = false
 			return sl, true
 		}
