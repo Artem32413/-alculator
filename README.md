@@ -54,4 +54,12 @@ curl --location 'http://localhost:8080/api/v1/calculate' \
 '
 ```
 ___
-
+# Ошибка!
+## При экспорте кода из репозитория вылезала ошибка:
+```
+# github.com/Artem32413/Aplication
+..\..\go\pkg\mod\github.com\!artem32413\!aplication@v0.0.0-20241222122836-653112fd55a6\main.go:137:7: implicit function instantiation requires go1.18 or later (-lang was set to go1.16; check go.mod)
+..\..\go\pkg\mod\github.com\!artem32413\!aplication@v0.0.0-20241222122836-653112fd55a6\main.go:191:9: implicit function instantiation requires go1.18 or later (-lang was set to go1.16; check go.mod)
+```
+>Go если что обновлен до последней версии как в осоновном репозитории, так и в импортирующем репозитории. Пробовал решить трабл, не вышло(
+___
