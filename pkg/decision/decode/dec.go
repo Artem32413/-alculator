@@ -7,6 +7,7 @@ import (
 	er "calc/pkg/decision/decode/errorJson"
 	ex "calc/pkg/decision/expense"
 	s "calc/pkg/mystruct"
+	
 )
 
 func Calculate(w http.ResponseWriter, r *http.Request) {
@@ -27,7 +28,7 @@ func Calculate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	resRead, err := ex.Calc(root.Expression)
+	resRead, err := ex.Start(root.Expression)
 	if FuncExiting := er.Error422(err, w, &myErr); FuncExiting != true {
 		return
 	} else {

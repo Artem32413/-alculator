@@ -4,6 +4,7 @@
 ## Сервис подсчёта арифметических выражений
 ___
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=21&pause=10000&color=00D7FF&repeat=false&width=530&lines=%D0%97%D0%B0%D0%BF%D1%83%D1%81%D0%BA+%D0%B8+%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0+%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0)](https://git.io/typing-svg)
+
 Для запуска программы можно использовать:
 >calc.exe
 >

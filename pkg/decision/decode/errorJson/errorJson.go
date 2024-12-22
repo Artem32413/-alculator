@@ -70,7 +70,8 @@ func Error422(err error, w http.ResponseWriter, myErr *s.MyError) bool {
 	}
 	return true
 }
-func SuccessfulTransition(resRead string, res s.Result, err error, w http.ResponseWriter) {
+func SuccessfulTransition(resRead float64, res s.Result, err error, w http.ResponseWriter) {
+	
 	res.Result = resRead
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
